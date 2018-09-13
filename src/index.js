@@ -29,6 +29,7 @@ class PDFViewer extends React.Component {
 
   onDocumentComplete = (pages) => {
     this.setState({
+      page: 1,
       pages
     });
   }
