@@ -320,55 +320,46 @@ mgrpdfStyles.wrapper = {
 var PDFViewer = function (_React$Component) {
   inherits(PDFViewer, _React$Component);
 
-  function PDFViewer() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function PDFViewer(props) {
     classCallCheck(this, PDFViewer);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = possibleConstructorReturn(this, (PDFViewer.__proto__ || Object.getPrototypeOf(PDFViewer)).call(this, props));
 
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = PDFViewer.__proto__ || Object.getPrototypeOf(PDFViewer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this.state = {
       pages: 0,
       page: 1
-    }, _this.onDocumentComplete = function (pages) {
+    };
+
+    _this.onDocumentComplete = function (pages) {
       _this.setState({
         pages: pages
       });
-    }, _this.handlePrevClick = function () {
+    };
+
+    _this.handlePrevClick = function () {
       if (_this.state.page === 1) return;
 
       _this.setState({
         page: _this.state.page - 1
       });
-    }, _this.handleNextClick = function () {
+    };
+
+    _this.handleNextClick = function () {
       if (_this.state.page === _this.state.pages) return;
 
       _this.setState({
         page: _this.state.page + 1
       });
-    }, _temp), possibleConstructorReturn(_this, _ret);
+    };
+
+    _this.state = {
+      pages: null,
+      page: _this.props.page || 1
+    };
+    return _this;
   }
 
   createClass(PDFViewer, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.setState({
-        pages: null,
-        page: this.props.page || 1
-      });
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(_ref2) {
-      var page = _ref2.page;
-
-      this.setState({ page: page || this.state.page });
-    }
-  }, {
     key: 'render',
     value: function render() {
       var source = this.props.document;
@@ -421,6 +412,11 @@ var PDFViewer = function (_React$Component) {
         ),
         nav
       );
+    }
+  }], [{
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(props, state) {
+      return { page: props.page || state.page };
     }
   }]);
   return PDFViewer;
