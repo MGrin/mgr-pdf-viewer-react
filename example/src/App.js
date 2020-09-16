@@ -105,8 +105,8 @@ class WithDynamicScale extends React.Component {
     scale: 1.0,
   }
 
-  increaseScale = () => this.setState(({ scale }) => ({ scale: scale + 0.1 }))
-  decreaseScale = () => this.setState(({ scale }) => ({ scale: scale - 0.1 }))
+  increaseScale = () => this.setState(({ scale }) => ({ scale: Number((scale + 0.1).toFixed(1)) }))
+  decreaseScale = () => this.setState(({ scale }) => ({ scale: Number((scale - 0.1).toFixed(1)) }))
 
   render() {
     return (
