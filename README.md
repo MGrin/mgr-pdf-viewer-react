@@ -1,3 +1,8 @@
+# Depreciation notice
+This project is not maintained anymore. Feel free to:
+* Take ownership of it (please drop me a message for this)
+* Use alternatives (such as [react-pdf](https://github.com/wojtekmaj/react-pdf))
+
 # mgr-pdf-viewer-react
 Simple react PDF Viewer component with controls. Every element can be styled upon your preferences using default classes our your own.
 
