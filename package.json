@@ -1,6 +1,6 @@
 {
   "name": "mgr-pdf-viewer-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple react PDF viewer component. Based on PDF.js.",
   "main": "index.js",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/rollup-babel-lib-bundler src/index.js",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "author": "MGrin",
   "license": "MIT",
