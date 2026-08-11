@@ -338,6 +338,15 @@ var PDFViewer = function (_React$Component) {
       _this.setState({
         pages: pages
       });
+    }, _this.onDocumentError = function (err) {
+      // react-pdf-js also reports superseded loads (a new document replacing the
+      // one in flight) through this callback. Those are not failures, so they
+      // should not reach the consumer.
+      if (err && err.isCanceled) return;
+
+      var onDocumentError = _this.props.onDocumentError;
+
+      if (onDocumentError) onDocumentError(err);
     }, _this.handlePrevClick = function () {
       if (_this.state.page === 1) return;
 
@@ -394,7 +403,8 @@ var PDFViewer = function (_React$Component) {
         loading: loader,
         page: page,
         scale: scale,
-        onDocumentComplete: this.onDocumentComplete });
+        onDocumentComplete: this.onDocumentComplete,
+        onDocumentError: this.onDocumentError });
 
       var nav = null;
       if (!hideNavbar && pages > 0) {
@@ -444,6 +454,7 @@ PDFViewer.propTypes = {
   scale: PropTypes.number,
   css: PropTypes.string,
   onDocumentClick: PropTypes.func,
+  onDocumentError: PropTypes.func,
 
   hideNavbar: PropTypes.bool,
   navigation: PropTypes.oneOfType([

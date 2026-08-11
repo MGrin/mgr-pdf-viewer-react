@@ -68,6 +68,19 @@ React component prop. types:
   * Required: **false**
   * Description: A function that will be called only on clicking the PDF page itself, NOT on the navbar
 
+* `onDocumentError`:
+  * Type: *Function*
+  * Required: **false**
+  * Description: Called with the PDF.js error when the document fails to load (missing file, network/CORS failure, corrupted PDF). Use it to render your own fallback instead of nothing.
+
+    ```js
+    <PDFViewer
+      document={{ url: 'https://example.com/missing.pdf' }}
+      onDocumentError={(err) => this.setState({ error: err.message })} />
+    ```
+
+    Note: this lets you *react* to the failure, but it does not stop the "Unhandled Rejection" overlay some dev servers show. That rejection is raised inside `react-pdf-js`, which this component depends on, and cannot be caught from here.
+
 * `css`:
   * Type: *String*
   * Required: **false**
