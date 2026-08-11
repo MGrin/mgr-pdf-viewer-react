@@ -3,6 +3,13 @@
   "version": "1.0.4",
   "description": "Simple react PDF viewer component. Based on PDF.js.",
   "main": "index.js",
+  "files": [
+    "dist",
+    "src",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "url": "https://github.com/MGrin/mgr-pdf-viewer-react",
     "type": "git"
